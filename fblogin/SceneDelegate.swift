@@ -7,10 +7,31 @@
 //
 
 import UIKit
+import FacebookCore
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    
+    
+    
+    
+    
+    
+    func scene(_ scene: UIScene,
+        openURLContexts URLContexts: Set<UIOpenURLContext>
+    ) {
+        guard let context = URLContexts.first else {
+            return
+        }
+        ApplicationDelegate.shared.application(
+            UIApplication.shared,
+            open: context.url,
+            sourceApplication:
+            context.options.sourceApplication,
+            annotation: context.options.annotation
+        )
+    }
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
